@@ -1,0 +1,181 @@
+#:import primeiraPagina primeiraPagina
+
+WindowManager:
+    PrimeiraTela:
+    SegundaTela:
+    TerceiraTela:
+
+<PrimeiraTela>:
+    id: firstScreen
+    name: 'primeira'
+    EstruturaLivro:
+    PrimeiraPagina:
+    #Button:
+     #   text: '>'
+      #  color: 0, 0, 0
+       # canvas.before:
+        #    Color:
+         #       rgba: 0, 0, 0, 1
+          #  Line:
+           #     width: 2
+            #    rectangle: self.x, self.y, self.width, self.height
+        #background_normal: ''
+        #background_color: 1, 1, 1, 1
+        #size_hint: .03, .04
+        #pos_hint: {'center_x': .85, 'center_y': .134}
+        #on_release:
+         #   root.manager.transition.direction = 'left'
+          #  app.root.current = 'segunda'
+
+<SegundaTela>:
+    name: 'segunda'
+    id: secondScreen
+    EstruturaLivro:
+    Button:
+        text: '<'
+        color: 0, 0, 0
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 2
+                rectangle: self.x, self.y, self.width, self.height
+        background_normal: ''
+        background_color: 1, 1, 1, 1
+        size_hint: .03, .04
+        pos_hint: {'center_x': .15, 'center_y': .134}
+        on_release:
+            root.manager.transition.direction = 'right'
+            app.root.current = 'primeira'
+    #Button:
+     #   text: '>'
+      #  color: 0, 0, 0
+       # canvas.before:
+        #    Color:
+         #       rgba: 0, 0, 0, 1
+          #  Line:
+           #     width: 2
+            #    rectangle: self.x, self.y, self.width, self.height
+        #background_normal: ''
+        #background_color: 1, 1, 1, 1
+        #size_hint: .03, .04
+        #pos_hint: {'center_x': .85, 'center_y': .134}
+        #on_release:
+         #   root.manager.transition.direction = 'left'
+          #  app.root.current = 'terceira'
+
+<TerceiraTela>:
+    name: 'terceira'
+    EstruturaLivro:
+    Button:
+        text: '<'
+        color: 0, 0, 0
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 2
+                rectangle: self.x, self.y, self.width, self.height
+        background_normal: ''
+        background_color: 1, 1, 1, 1
+        size_hint: .03, .04
+        pos_hint: {'center_x': .15, 'center_y': .134}
+        on_release:
+            root.manager.transition.direction = 'right'
+            app.root.current = 'primeira'
+
+<EstruturaLivro>:
+    id: estrutura
+    canvas.before:
+        #Color:
+            #rgb: 1, 0.5, 0.2
+        Rectangle:
+            size: self.size
+            #source: 'images/falling_star.jpg'
+
+        #Color:
+         #   rgba: 0.6, 0.4, 0.1, 1
+        #Esquerda
+        Quad:
+            id: first_quad
+            points: (self.width*0.1, self.height*0.9, self.width*0.48, self.height*0.82, self.width*0.48, self.height*0.1, self.width*0.1, self.height*0.1)
+            source: 'images/fundo9.jpg'
+
+
+        #Direita
+        Quad:
+            points: (self.width*0.52, self.height*0.82, self.width*0.9, self.height*0.9, self.width*0.9, self.height*0.1, self.width*0.52, self.height*0.1)
+            source: 'images/fundo7.jpg'
+        #Esquerda-meio
+        Quad:
+            points: (self.width*0.48, self.height*0.82, self.width*0.5, self.height*0.8, self.width*0.5, self.height*0.08, self.width*0.48, self.height*0.1)
+            source: 'images/centro-teste2.jpg'
+        #Direita-meio
+        Quad:
+            points: (self.width*0.5, self.height*0.8, self.width*0.52, self.height*0.82, self.width*0.52, self.height*0.1, self.width*0.5, self.height*0.08)
+            source: 'images/centro-teste2.jpg'
+        Color:
+            rgba: 0, 0, 0, 0.8
+        Rectangle:
+            size: self.width*0.015, self.height*0.8
+            pos: self.width*0.1, self.height*0.1
+        Color:
+            rgba: 0.4, 0, 0, 1
+        #Linhas Laterais
+        Line:
+            points: (self.width*0.1, self.height*0.1, self.width*0.1, self.height*0.9)
+            width: 3
+        Line:
+            points: (self.width*0.9, self.height*0.1, self.width*0.9, self.height*0.9)
+            width: 3
+
+        #Linhas Base
+        Line:
+            points: (self.width*0.1, self.height*0.1, self.width*0.48, self.height*0.1)
+            width: 3
+        Line:
+            points: (self.width*0.52, self.height*0.1, self.width*0.9, self.height*0.1)
+            width: 3
+        #Linhas Topo
+        Line:
+            points: (self.width*0.1, self.height*0.9, self.width*0.48, self.height*0.82)
+            width: 3
+        Line:
+            points: (self.width*0.52, self.height*0.82, self.width*0.9, self.height*0.9)
+            width: 3
+        #Centro
+        #Line:
+         #   points: (self.width*0.5, self.height*0.12, self.width*0.5, self.height*0.78)
+          #  width: 2
+        #teste centro cima
+        Line:
+            points: (self.width*0.48, self.height*0.82, self.width*0.5, self.height*0.8)
+            width: 2
+        Line:
+            points: (self.width*0.52, self.height*0.82, self.width*0.5, self.height*0.8)
+            width: 2
+        #teste centro baixo
+        Line:
+            points: (self.width*0.48, self.height*0.1, self.width*0.5, self.height*0.08)
+            width: 2
+        Line:
+            points: (self.width*0.52, self.height*0.1, self.width*0.5, self.height*0.08)
+            width: 2
+        #lateral-centro
+        Line:
+            points: (self.width*0.115, self.height*0.1, self.width*0.115, self.height*0.9)
+            width: 1.5
+        Line:
+            id: ultimaLinha
+            points: (self.width*0.885, self.height*0.1, self.width*0.885, self.height*0.9)
+            width: 1.5
+        #linhas baixas
+        #Line:
+         #   points: (self.width*0.115, self.height*0.12, self.width*0.481, self.height*0.12)
+          #  width: 1.5
+        #linhas topo?
+        #Line:
+         #   points: (self.width*0.115, self.height*0.88, self.width*0.481, self.height*0.8)
+          #  width: 1.5
+
+

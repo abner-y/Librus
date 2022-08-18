@@ -1,0 +1,108 @@
+
+
+<PrimeiraPagina>:
+    #caixaCasos: boxCasos
+    Label:
+        font_size: 0.06 * (self.height + self.width)
+        text: 'Librus'
+        pos_hint: {'center_x': .3, 'center_y': .6}
+        color: 0, 0, 0
+        font_name: 'fonts/Windsong.ttf'
+    TextInput:
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 1.2
+                rectangle: self.x, self.y, self.width, self.height
+        size_hint: .3, .05
+        halign: 'left'
+        hint_text:'#Pesquise Aqui'
+        on_text_validate: root.parent.on_text_validate(self)
+        multiline: False
+        pos_hint: {'center_x': .3, 'center_y': .45}
+        background_normal: ''
+        background_color: 1, 1, 1, 0
+    Label:
+        id: criarcaso
+        font_size: 0.035 * (self.height + self.width)
+        text: 'Criar Caso'
+        pos_hint: {'center_x': .3, 'center_y': .32}
+        color: 0, 0, 0
+        font_name: 'fonts/Windsong.ttf'
+    #Display caso template
+
+    ViewCasos:
+
+    Button:
+        font_size: 0.05 * (self.height + self.width)
+        text: 'Painel Investigação'
+        color: 0, 0, 0
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 2
+                rectangle: self.x, self.y, self.width, self.height
+        size_hint: .3, .04
+        pos_hint: {'center_x': .3, 'center_y': .23}
+        background_normal: ''
+        background_color: 1, 1, 1, 1
+        on_press:
+            root.parent.painelInvestigacao()
+            root.parent.manager.transition.direction = 'left'
+            root.parent.manager.current = 'segunda'
+    Button:
+        text: '+'
+        color: 0, 0, 0
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 2
+                rectangle: self.x, self.y, self.width, self.height
+        on_press: root.parent.criarCaso()
+        background_normal: ''
+        background_color: 1, 1, 1, 1
+        size_hint: .03, .04
+        pos_hint: {'center_x': .42, 'center_y': .334}
+
+<CaixaCasos>:
+    id: boxCasos
+    orientation: 'vertical'
+    size_hint_x: 0.35
+    pos_hint: {'center_x': .7, 'center_y': .49}
+    #canvas:
+     #   Color:
+      #      rgb: 0,0,0
+       # Line:
+        #    rectangle: (self.x, self.y, self.width, self.height) #x, y, w, h
+         #   width: 2
+
+<ViewCasos>:
+    size_hint_y: 0.6
+    pos_hint: {'center_x': 1.02, 'center_y': .5}
+    do_scroll_x: False
+    CaixaCasos:
+        id: box
+        size_hint_y: None
+        height: self.minimum_height
+        #canvas:
+         #   Color:
+          #      rgb: 0,0,0
+           # Line:
+            #    rectangle: (self.x, self.y, self.width, self.height) #x, y, w, h
+             #   width: 2
+        #Label:
+            #text: 'hi'
+            #font_size: 30
+            #color: (0, 0, 0)
+            #height: 50
+        TextInput:
+            #text: 'Teste do kivy testando um input legal aqui que espero funcionar e então descobrir a verdade..'
+            background_color: (0, 0, 0, 0)
+            disabled: True
+            #font_size: 15
+            #height: 70
+
+
