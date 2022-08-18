@@ -17,7 +17,7 @@ class PrimeiraPagina(RelativeLayout):
         Clock.schedule_once(self.post_init, 0)
 
     def post_init(self, *args):
-        print(f'{self.ids}< - primeira pagina -> {self.ids}')
+        pass
 
 
     def on_touch_down(self, touch):
@@ -43,7 +43,6 @@ class ViewCasos(ScrollView):
 
 
     def post_init(self, *args):
-        print(f'{self.ids}< - ids viewCasos -> {self.ids}')
         mydb = mysql.connector.connect(
             host="localhost",
             user="root",
@@ -71,4 +70,5 @@ class ViewCasos(ScrollView):
         app.root.current = 'segunda'
         app.root.transition.direction = 'up'
         app.root.id_pagina = id['id']
+        print(id['id'])
 

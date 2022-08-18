@@ -6,6 +6,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 import mysql.connector
 
 Builder.load_file('primeiraPagina.kv')
+Builder.load_file('casosPagina.kv')
 
 class PrimeiraTela(Screen):
     text_input_str = StringProperty()
@@ -32,7 +33,7 @@ class TerceiraTela(Screen):
 
 class WindowManager(ScreenManager):
     id_pagina = NumericProperty()
-    print(f'{id_pagina}')
+
 
 class EstruturaLivro(RelativeLayout):
     pass

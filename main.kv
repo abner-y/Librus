@@ -1,4 +1,5 @@
 #:import primeiraPagina primeiraPagina
+#:import casosPagina casosPagina
 
 WindowManager:
     PrimeiraTela:
@@ -10,27 +11,13 @@ WindowManager:
     name: 'primeira'
     EstruturaLivro:
     PrimeiraPagina:
-    #Button:
-     #   text: '>'
-      #  color: 0, 0, 0
-       # canvas.before:
-        #    Color:
-         #       rgba: 0, 0, 0, 1
-          #  Line:
-           #     width: 2
-            #    rectangle: self.x, self.y, self.width, self.height
-        #background_normal: ''
-        #background_color: 1, 1, 1, 1
-        #size_hint: .03, .04
-        #pos_hint: {'center_x': .85, 'center_y': .134}
-        #on_release:
-         #   root.manager.transition.direction = 'left'
-          #  app.root.current = 'segunda'
+
 
 <SegundaTela>:
     name: 'segunda'
     id: secondScreen
     EstruturaLivro:
+    CasosPagina:
     Button:
         text: '<'
         color: 0, 0, 0
@@ -47,22 +34,6 @@ WindowManager:
         on_release:
             root.manager.transition.direction = 'right'
             app.root.current = 'primeira'
-    #Button:
-     #   text: '>'
-      #  color: 0, 0, 0
-       # canvas.before:
-        #    Color:
-         #       rgba: 0, 0, 0, 1
-          #  Line:
-           #     width: 2
-            #    rectangle: self.x, self.y, self.width, self.height
-        #background_normal: ''
-        #background_color: 1, 1, 1, 1
-        #size_hint: .03, .04
-        #pos_hint: {'center_x': .85, 'center_y': .134}
-        #on_release:
-         #   root.manager.transition.direction = 'left'
-          #  app.root.current = 'terceira'
 
 <TerceiraTela>:
     name: 'terceira'
