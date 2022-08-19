@@ -27,12 +27,15 @@ class SegundaTela(Screen):
     pass
 
 
+
+
 class TerceiraTela(Screen):
     pass
 
 
 class WindowManager(ScreenManager):
     id_pagina = NumericProperty()
+
 
 
 class EstruturaLivro(RelativeLayout):
@@ -46,6 +49,7 @@ class EstruturaLivro(RelativeLayout):
 
 
 class MainApp(App):
+    caso = StringProperty('testee')
     def on_build(self):
         pass
 

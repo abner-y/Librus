@@ -9,9 +9,11 @@ from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.label import Label
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.textinput import TextInput
+from casosPagina import CasosPagina
 
 
 class PrimeiraPagina(RelativeLayout):
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         Clock.schedule_once(self.post_init, 0)
@@ -66,9 +68,10 @@ class ViewCasos(ScrollView):
 
     def pressed(self, instance):
         id = instance.ids
+        tmp = CasosPagina()
+        tmp.displayCaso(id['id'])
+        print(id['id'])
         app = App.get_running_app()
         app.root.current = 'segunda'
         app.root.transition.direction = 'up'
-        app.root.id_pagina = id['id']
-        print(id['id'])
 

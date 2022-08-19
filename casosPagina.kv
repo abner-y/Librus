@@ -1,8 +1,20 @@
 <CasosPagina>:
-    Label:
-        font_size: 0.06 * (self.height + self.width)
-        text: 'Caso 01'
-        pos_hint: {'center_x': .3, 'center_y': .6}
-        color: 0, 0, 0
-        font_name: 'fonts/Windsong.ttf'
+    CaixaTitulo:
+        TextInput:
+            id: nomeCap
+            font_size: 40
+            text: app.caso
+            pos_hint: {'center_x': .3, 'center_y': .6}
+            color: 0, 0, 0
+            font_name: 'fonts/Windsong.ttf'
+            background_color: (0, 0, 0, 0)
+            disabled: True
+            disabled_foreground_color: (0, 0, 0, 1)
+
+<CaixaTitulo>:
+    id: boxTitulo
+    orientation: 'vertical'
+    size_hint_x: 0.35
+    size_hint_y: 0.5
+    pos_hint: {'center_x': .4, 'center_y': .55}
 
