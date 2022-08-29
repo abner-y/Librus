@@ -45,20 +45,24 @@ class ViewCasos(ScrollView):
 
 
     def post_init(self, *args):
-        mydb = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            passwd="123456",
-            database="librus",
-        )
+        try:
+            mydb = mysql.connector.connect(
+                host="localhost",
+                user="root",
+                passwd="123456",
+                database="librus",
+            )
 
-        c = mydb.cursor()
-        c.execute("SELECT nomeCaso, descricao, idcasos FROM casos")
-        resultados = c.fetchall()
-        print(resultados)
+            c = mydb.cursor()
+            c.execute("SELECT nomeCaso, descricao, idcasos FROM casos")
+            resultados = c.fetchall()
+            print(resultados)
 
-        c.close()
-        mydb.close()
+            c.close()
+            mydb.close()
+        except:
+            resultados = [('Teste 1', 'Descrição do teste', 2)]
+
         for resultado in resultados:
             self.submit = Button(text = f'{resultado[0]}' if len(resultado[0]) < 15 else f'{resultado[0][0:15]}...', font_size = 30, size_hint_y = None, height = 50, color = (0, 0, 0), background_color = (1, 1, 1, 0.1))
             self.submit.bind(on_press = self.pressed)

@@ -4,6 +4,8 @@ from kivy.app import App
 from kivy.properties import ObjectProperty, Clock, StringProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.relativelayout import RelativeLayout
+from kivy.uix.scrollview import ScrollView
+
 
 class CasosPagina(RelativeLayout):
     nomeCapitulo = StringProperty()
@@ -16,24 +18,34 @@ class CasosPagina(RelativeLayout):
         self.nomeCapitulo = 'teste'
 
     def displayCaso(self, id_caso):
+        try:
+            mydb = mysql.connector.connect(
+                host="localhost",
+                user="root",
+                passwd="123456",
+                database="librus",
+            )
 
-        mydb = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            passwd="123456",
-            database="librus",
-        )
+            c = mydb.cursor()
 
-        c = mydb.cursor()
-        app = App.get_running_app()
-        c.execute(f"SELECT nomeCaso, descricao FROM casos WHERE idcasos = {id_caso}")
-        resultados = c.fetchall()
+            c.execute(f"SELECT nomeCaso, descricao FROM casos WHERE idcasos = {id_caso}")
+            resultados = c.fetchall()
+            c.close()
+            mydb.close()
+        except:
+            resultados = [('Teste 1', 'Descrição do teste')]
         print(resultados)
-        app.caso = resultados[0][0]
+        app = App.get_running_app()
+        app.tituloCaso = resultados[0][0]
+        app.descCaso = resultados[0][1]
 
-        c.close()
-        mydb.close()
 
 
 class CaixaTitulo(BoxLayout):
     pass
+
+
+class CaixaDescricao(BoxLayout):
+    pass
+
+

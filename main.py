@@ -49,7 +49,8 @@ class EstruturaLivro(RelativeLayout):
 
 
 class MainApp(App):
-    caso = StringProperty('testee')
+    tituloCaso = StringProperty('testee')
+    descCaso = StringProperty('Texto descritivo aqui!')
     def on_build(self):
         pass
 
