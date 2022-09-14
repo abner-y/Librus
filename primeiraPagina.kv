@@ -59,7 +59,10 @@
             Line:
                 width: 2
                 rectangle: self.x, self.y, self.width, self.height
-        on_press: root.parent.criarCaso()
+        on_press:
+            root.parent.criarCaso()
+            root.parent.manager.transition.direction = 'left'
+            root.parent.manager.current = 'quarta'
         background_normal: ''
         background_color: 1, 1, 1, 1
         size_hint: .03, .04

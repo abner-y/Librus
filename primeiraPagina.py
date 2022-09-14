@@ -50,7 +50,7 @@ class ViewCasos(ScrollView):
                 host="localhost",
                 user="root",
                 passwd="123456",
-                database="librus",
+                database="librus"
             )
 
             c = mydb.cursor()

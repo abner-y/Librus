@@ -1,0 +1,52 @@
+<CriarCaso>:
+    titulo: tituloCaso
+    desc: descCaso
+
+    TextInput:
+        id: tituloCaso
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 1.2
+                rectangle: self.x, self.y, self.width, self.height
+        size_hint: .3, .05
+        halign: 'left'
+        hint_text:'#Nome Caso'
+       # on_text_validate: root.parent.on_text_validate(self)
+        multiline: False
+        pos_hint: {'center_x': .3, 'center_y': .75}
+        background_normal: ''
+        background_color: 1, 1, 1, 0
+    TextInput:
+        id: descCaso
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 1.2
+                rectangle: self.x, self.y, self.width, self.height
+        size_hint: .3, .4
+        halign: 'left'
+        hint_text:'#Descricao'
+        #on_text_validate: root.parent.on_text_validate(self)
+        multiline: True
+        pos_hint: {'center_x': .3, 'center_y': .45}
+        background_normal: ''
+        background_color: 1, 1, 1, 0
+    Button:
+        font_size: 0.05 * (self.height + self.width)
+        text: 'Criar Caso'
+        color: 0, 0, 0
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 2
+                rectangle: self.x, self.y, self.width, self.height
+        size_hint: .3, .04
+        pos_hint: {'center_x': .3, 'center_y': .23}
+        background_normal: ''
+        background_color: 1, 1, 1, 1
+        on_press:
+            root.parent.criarConf(root)
