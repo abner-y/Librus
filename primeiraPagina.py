@@ -77,5 +77,6 @@ class ViewCasos(ScrollView):
         print(id['id'])
         app = App.get_running_app()
         app.root.current = 'segunda'
+        app.root.id_pagina = id['id']
         app.root.transition.direction = 'up'
 

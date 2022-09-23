@@ -27,7 +27,25 @@
             height: 1000
 
 
+    Button:
 
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 1.5
+                rectangle: self.x, self.y, self.width, self.height
+        size_hint: .05, .06
+        pos_hint: {'center_x': .42, 'center_y': .16}
+        background_normal: ''
+        background_color: 0, 0, 0, 0
+        on_press:
+            root.deletarCaso(app.root.id_pagina)
+	        app.root.current = 'primeira'
+        Image:
+            source: 'images/icons/icon-deletev2.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
 <CaixaTitulo>:
     id: boxTitulo
     orientation: 'vertical'

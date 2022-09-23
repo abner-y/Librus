@@ -6,6 +6,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.scrollview import ScrollView
 
+import crudCasos
+
 
 class CasosPagina(RelativeLayout):
     nomeCapitulo = StringProperty()
@@ -38,6 +40,10 @@ class CasosPagina(RelativeLayout):
         app = App.get_running_app()
         app.tituloCaso = resultados[0][0]
         app.descCaso = resultados[0][1]
+
+    def deletarCaso(self, id):
+        crudCasos.deletarCaso(id)
+
 
 
 
