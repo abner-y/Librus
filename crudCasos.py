@@ -7,6 +7,68 @@ from mysql.connector import DataError, InternalError, IntegrityError, Operationa
     ProgrammingError
 
 
+def retornaId(titulo):
+    try:
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            passwd="123456",
+            database="librus"
+        )
+
+        c = mydb.cursor()
+        c.execute(f"SELECT idcasos FROM casos WHERE nomeCaso = '{titulo}'")
+        print(id)
+        mydb.commit()
+        c.close()
+        mydb.close()
+        pop = Popup(title='Casos',
+                    content=Label(text='Caso deletado com sucesso.'),
+                    size_hint=(None, None), size=(400, 200))
+        pop.open()
+
+    except DataError as err:
+        print('Erro na criação')
+        print(err)
+
+        return 0
+    except InternalError as err:
+        print('Erro interno')
+        print(err)
+
+        return 0
+    except IntegrityError as err:
+        print('Erro integridade')
+        print(err)
+
+        return 0
+    except OperationalError as err:
+        print('Erro operational')
+        print(err)
+
+        return 0
+    except NotSupportedError as err:
+        print('Erro not supported')
+        print(err)
+
+        return 0
+    except ProgrammingError as err:
+        print('Erro programming')
+        print(err)
+
+        return 0
+
+    except:
+        print("Unknown error occurred")
+        pop = Popup(title='Casos',
+                    content=Label(text='Erro ao pegar Id.'),
+                    size_hint=(None, None), size=(400, 200))
+        pop.open()
+        return 0
+    else:
+        return 'Id recuperado com sucesso'
+
+
 def criarCaso(nomeCaso, desc, caminho = ''):
     now = datetime.now()
     atual = now.strftime("%Y-%m-%d %H:%M:%S")

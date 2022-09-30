@@ -7,6 +7,7 @@ from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.scrollview import ScrollView
 
 import crudCasos
+import primeiraPagina
 
 
 class CasosPagina(RelativeLayout):
@@ -19,7 +20,8 @@ class CasosPagina(RelativeLayout):
     def post_init(self, *args):
         self.nomeCapitulo = 'teste'
 
-    def displayCaso(self, id_caso):
+    def displayCaso(self, instance):
+        """
         try:
             mydb = mysql.connector.connect(
                 host="localhost",
@@ -37,12 +39,21 @@ class CasosPagina(RelativeLayout):
         except:
             resultados = [('Teste 1', 'Descrição do teste')]
         print(resultados)
+        """
         app = App.get_running_app()
-        app.tituloCaso = resultados[0][0]
-        app.descCaso = resultados[0][1]
+        app.tituloCaso = str(instance.titulo)
+        app.descCaso = instance.desc
+        print('ids instancia: ', instance.ids['id'])
 
-    def deletarCaso(self, id):
-        crudCasos.deletarCaso(id)
+    def deletarCaso(self, instance):
+        crudCasos.deletarCaso(instance.ids["id"])
+        #print(f'id: {instance.ids["id"]}')
+        app = App.get_running_app()
+        tmp = app.root.caixa
+        #print('temp: ', tmp)
+        tmp.remove_widget(instance)
+        tmp.remove_widget(instance.input)
+        #tmp.remover_widget(primeiraPagina.ViewCasos())
 
 
 

@@ -1,5 +1,6 @@
 from kivy.app import App
-from kivy.properties import StringProperty, NumericProperty
+from kivy.properties import StringProperty, NumericProperty, ListProperty, ObjectProperty
+from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from kivy.uix.relativelayout import RelativeLayout
@@ -28,6 +29,11 @@ class PrimeiraTela(Screen):
     def painelInvestigacao(self):
         print('Painel')
 
+    #def remover_widget(self):
+        #print(self.widget)
+        #self.ids.box.remove_widget(self.ids['box'].Button)
+        #self.ids.box.remove_widget(self.ids['box'].TextInput)
+
 
 class SegundaTela(Screen):
     pass
@@ -40,30 +46,13 @@ class TerceiraTela(Screen):
 
 
 class QuartaTela(Screen):
-    text_input_titulo = StringProperty()
-    text_input_desc = StringProperty()
-
-    def criarConf(self, widget):
-        self.text_input_titulo = widget.ids['tituloCaso'].text
-        self.text_input_desc = widget.ids['descCaso'].text
-        print(self.text_input_titulo)
-        print(self.text_input_desc)
-        if ((self.text_input_titulo != '') and (self.text_input_desc != '')):
-            crudCasos.criarCaso(self.text_input_titulo, self.text_input_desc)
-
-        else:
-            pop = Popup(title='Erro',
-                        content=Label(text='Por favor preencha os campos corretamente.'),
-                        size_hint=(None, None), size=(400, 200))
-            pop.open()
-        self.resetar(widget)
-    def resetar(self, widget):
-        widget.ids['tituloCaso'].text = ''
-        widget.ids['descCaso'].text = ''
+    pass
 
 
 class WindowManager(ScreenManager):
     id_pagina = NumericProperty()
+    instancia = ObjectProperty()
+
 
 
 
@@ -78,9 +67,9 @@ class EstruturaLivro(RelativeLayout):
 
 
 class MainApp(App):
-    tituloCaso = StringProperty('testee')
-    descCaso = StringProperty('Texto descritivo aqui!')
-    def on_build(self):
+    tituloCaso = StringProperty()
+    descCaso = StringProperty()
+    def build(self):
         pass
 
 
