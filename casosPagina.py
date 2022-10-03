@@ -21,6 +21,8 @@ class CasosPagina(RelativeLayout):
         self.nomeCapitulo = 'teste'
 
     def displayCaso(self, instance):
+        self.ids.descCap.disabled = True
+        self.ids.descCap.background_color = [0, 0, 0, 0]
         """
         try:
             mydb = mysql.connector.connect(
@@ -54,6 +56,27 @@ class CasosPagina(RelativeLayout):
         tmp.remove_widget(instance)
         tmp.remove_widget(instance.input)
         #tmp.remover_widget(primeiraPagina.ViewCasos())
+
+    def editarCaso(self, instance):
+        if self.ids.descCap.disabled == True:
+            self.ids.descCap.disabled = False
+            self.ids.descCap.background_color = [0.8, 0.8, 0.8, 0.5]
+            self.ids.nomeCap.disabled = False
+            self.ids.nomeCap.background_color = [0.8, 0.8, 0.8, 0.5]
+        else:
+            self.ids.descCap.disabled = True
+            self.ids.descCap.background_color = [0, 0, 0, 0]
+            self.ids.nomeCap.disabled = True
+            self.ids.nomeCap.background_color = [0, 0, 0, 0]
+        app = App.get_running_app()
+        app.root.atualizar += 1
+        if app.root.atualizar == 2:
+            app.root.atualizar = 0
+            crudCasos.atualizarCaso(instance.ids["id"], self.ids.nomeCap.text, self.ids.descCap.text)
+            instance.text = f'{self.ids.nomeCap.text}' if len(self.ids.nomeCap.text) < 15 else f'{self.ids.nomeCap.text[0:15]}...'
+            instance.input.text = f'{self.ids.descCap.text[0:100]}...'
+        print('Atualizar: ', app.root.atualizar)
+
 
 
 

@@ -228,3 +228,73 @@ def deletarCaso(id):
         return 0
     else:
         return 'Deletado com sucesso'
+
+def atualizarCaso(id, nomeCaso, desc):
+    #now = datetime.now()
+    #atual = now.strftime("%Y-%m-%d %H:%M:%S")
+    try:
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            passwd="123456",
+            database="librus"
+        )
+
+        c = mydb.cursor()
+        c.execute(f"UPDATE casos SET nomeCaso = '{nomeCaso}', descricao = '{desc}' WHERE idcasos = '{id}'")
+        mydb.commit()
+        c.close()
+        mydb.close()
+        pop = Popup(title='Casos',
+                    content=Label(text='Caso atualizado com sucesso.'),
+                    size_hint=(None, None), size=(400, 200))
+        pop.open()
+
+    except DataError as err:
+        print('Erro na criação')
+        print(err)
+        pop = Popup(title='Casos',
+                    content=Label(text='Erro ao atualizar caso.'),
+                    size_hint=(None, None), size=(400, 200))
+        pop.open()
+        return 0
+    except InternalError as err:
+        print('Erro interno')
+        print(err)
+        pop = Popup(title='Casos',
+                    content=Label(text='Erro ao atualizar caso.'),
+                    size_hint=(None, None), size=(400, 200))
+        pop.open()
+        return 0
+    except IntegrityError as err:
+        print('Erro integridade')
+        print(err)
+        pop = Popup(title='Casos',
+                    content=Label(text='Erro ao atualizar caso.'),
+                    size_hint=(None, None), size=(400, 200))
+        pop.open()
+        return 0
+    except OperationalError as err:
+        print('Erro operational')
+        print(err)
+        pop = Popup(title='Casos',
+                    content=Label(text='Erro ao atualizar caso.'),
+                    size_hint=(None, None), size=(400, 200))
+        pop.open()
+        return 0
+    except NotSupportedError as err:
+        print('Erro not supported')
+        print(err)
+        pop = Popup(title='Casos',
+                    content=Label(text='Erro ao atualizar caso.'),
+                    size_hint=(None, None), size=(400, 200))
+        pop.open()
+        return 0
+    except ProgrammingError as err:
+        print('Erro programming')
+        print(err)
+        pop = Popup(title='Casos',
+                    content=Label(text='Erro ao atualizar caso.'),
+                    size_hint=(None, None), size=(400, 200))
+        pop.open()
+        return 0

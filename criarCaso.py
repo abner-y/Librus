@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.properties import StringProperty
 from kivy.uix.button import Button
+from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.textinput import TextInput

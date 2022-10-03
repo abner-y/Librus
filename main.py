@@ -36,7 +36,14 @@ class PrimeiraTela(Screen):
 
 
 class SegundaTela(Screen):
-    pass
+    def resetar(self):
+        if self.children[1].ids.descCap.disabled == False:
+            self.children[1].ids.descCap.disabled = True
+            self.children[1].ids.descCap.background_color = [0, 0, 0, 0]
+            self.children[1].ids.nomeCap.disabled = True
+            self.children[1].ids.nomeCap.background_color = [0, 0, 0, 0]
+        app = App.get_running_app()
+        app.root.atualizar = 0
 
 
 
@@ -52,6 +59,7 @@ class QuartaTela(Screen):
 class WindowManager(ScreenManager):
     id_pagina = NumericProperty()
     instancia = ObjectProperty()
+    atualizar = NumericProperty()
 
 
 
