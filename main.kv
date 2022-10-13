@@ -1,12 +1,15 @@
 #:import primeiraPagina primeiraPagina
 #:import casosPagina casosPagina
 #:import criarCaso criarCaso
+#:import arquivoPagina arquivoPagina
 
 WindowManager:
     PrimeiraTela:
     SegundaTela:
     TerceiraTela:
     QuartaTela:
+    ArquivosTela:
+
 
 <PrimeiraTela>:
     id: firstScreen
@@ -18,6 +21,7 @@ WindowManager:
 <SegundaTela>:
     name: 'segunda'
     id: secondScreen
+
     EstruturaLivro:
     CasosPagina:
     Button:
@@ -37,6 +41,7 @@ WindowManager:
             root.manager.transition.direction = 'right'
             app.root.current = 'primeira'
             root.resetar()
+
 
 <TerceiraTela>:
     name: 'terceira'
@@ -79,6 +84,11 @@ WindowManager:
         on_release:
             root.manager.transition.direction = 'right'
             app.root.current = 'primeira'
+
+<ArquivosTela>:
+    name: 'archTela'
+    ArquivoPagina:
+
 
 <EstruturaLivro>:
     id: estrutura

@@ -12,7 +12,7 @@ import crudCasos
 Builder.load_file('primeiraPagina.kv')
 Builder.load_file('casosPagina.kv')
 Builder.load_file('criarCaso.kv')
-
+Builder.load_file('arquivoPagina.kv')
 
 
 class PrimeiraTela(Screen):
@@ -42,8 +42,13 @@ class SegundaTela(Screen):
             self.children[1].ids.descCap.background_color = [0, 0, 0, 0]
             self.children[1].ids.nomeCap.disabled = True
             self.children[1].ids.nomeCap.background_color = [0, 0, 0, 0]
+            self.children[1].ids.imageAtualizar.source = 'images/icons/icon-edit.png'
+            self.children[1].ids.btnDeletar.disabled = False
+            self.children[1].ids.btnDeletar.opacity = 1
         app = App.get_running_app()
         app.root.atualizar = 0
+
+
 
 
 
@@ -55,8 +60,14 @@ class TerceiraTela(Screen):
 class QuartaTela(Screen):
     pass
 
+class ArquivosTela(Screen):
+    arquivo_widget = ObjectProperty()
+
+
+
 
 class WindowManager(ScreenManager):
+    arquivo_widget = ObjectProperty()
     id_pagina = NumericProperty()
     instancia = ObjectProperty()
     atualizar = NumericProperty()
@@ -75,6 +86,7 @@ class EstruturaLivro(RelativeLayout):
 
 
 class MainApp(App):
+
     tituloCaso = StringProperty()
     descCaso = StringProperty()
     def build(self):

@@ -51,16 +51,12 @@ class CriarCaso(RelativeLayout):
         widget.ids['descCaso'].text = ''
 
     def pressed(self, instance):
-        print('self children: ', self.children)
-        print('instancia-texto: ', instance.text)
         id = instance.ids
-        print('instancia kids: ', instance.children)
-        print(f'instancia: {instance.titulo}')
-
         tmp = CasosPagina()
         tmp.displayCaso(instance)
         print(id['id'])
         app = App.get_running_app()
+        app.root.id_pagina = id['id']
         app.root.current = 'segunda'
         app.root.instancia = instance
         app.root.transition.direction = 'up'

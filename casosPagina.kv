@@ -29,7 +29,7 @@
 
 
     Button:
-
+        id: btnDeletar
         canvas.before:
             Color:
                 rgba: 0, 0, 0, 1
@@ -49,7 +49,7 @@
             center_y: self.parent.center_y
 
     Button:
-
+        id: btnAtualizar
         canvas.before:
             Color:
                 rgba: 0, 0, 0, 1
@@ -64,9 +64,31 @@
             root.editarCaso(app.root.instancia)
 
         Image:
+            id: imageAtualizar
             source: 'images/icons/icon-edit.png'
             center_x: self.parent.center_x
             center_y: self.parent.center_y
+
+    Button:
+        id: btnArquivos
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 1
+                rectangle: self.x, self.y, self.width, self.height
+        size_hint: .35, .35
+        pos_hint: {'center_x': .3, 'center_y': .4}
+        background_normal: ''
+        background_color: 0, 0, 0, 0
+        on_press:
+            root.arquivos(app.root.instancia)
+
+        #Image:
+         #   id: imageArquivos
+          #  source: 'images/icons/icon-edit.png'
+           # center_x: self.parent.center_x
+            #center_y: self.parent.center_y
 
 <CaixaTitulo>:
     id: boxTitulo

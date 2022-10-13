@@ -1,0 +1,70 @@
+<ArquivoPagina>:
+    canvas.before:
+        #Color:
+         #   rgba: 1, 1, 1, .8
+        Rectangle:
+            size: self.size
+            source: 'images/bronze-pattern.jpg'
+        Quad:
+            points: (self.width*0.1, self.height*0.9, self.width*0.9, self.height*0.9, self.width*0.9, self.height*0.1, self.width*0.1, self.height*0.1)
+            source: 'images/fundo9.jpg'
+        Quad:
+            points: (self.width*0.1, self.height*0.95, self.width*0.15, self.height*0.95, self.width*0.2, self.height*0.9, self.width*0.1, self.height*0.9)
+            source: 'images/fundo9.jpg'
+
+        Quad:
+            points: (self.width*0.15, self.height*0.85, self.width*0.85, self.height*0.85, self.width*0.85, self.height*0.15, self.width*0.15, self.height*0.15)
+            source: 'images/fundo6.jpg'
+        Color:
+            rgba: 0, 0, 0, 1
+        Line:
+            points: (self.width*0.11, self.height*0.9, self.width*0.11, self.height*0.94)
+            width: 1
+        Line:
+            points: (self.width*0.11, self.height*0.94, self.width*0.145, self.height*0.94)
+            width: 1
+    ListaArquivos:
+    Button:
+        font_size: dp(30)
+        #font_name: 'fonts/Eurostile.ttf'
+        text: "X"
+        pos_hint: {'center_x': .875, 'center_y': .875}
+        size_hint: .052, .052
+        on_press:
+            app.root.transition.direction = 'left'
+            app.root.current = app.root.anterior
+            root.resetarArquivos()
+        background_normal: ''
+        background_color: 1, .3, .4, .85
+
+
+
+<CaixaArquivos>:
+    id: boxArquivos
+    orientation: 'vertical'
+    size_hint_x: 0.35
+    pos_hint: {'center_x': .7, 'center_y': .49}
+    #canvas:
+     #   Color:
+      #      rgb: 0,0,0
+       # Line:
+        #    rectangle: (self.x, self.y, self.width, self.height) #x, y, w, h
+         #   width: 2
+
+<ListaArquivos>:
+    size_hint_y: 0.7
+    pos_hint: {'center_x': 0.6, 'center_y': .5}
+    do_scroll_x: False
+    CaixaArquivos:
+        id: boxArch
+        size_hint_y: None
+        height: self.minimum_height
+        #canvas:
+         #   Color:
+          #      rgb: 0,0,0
+           # Line:
+            #    rectangle: (self.x, self.y, self.width, self.height) #x, y, w, h
+             #   width: 2
+
+
+
