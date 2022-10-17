@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.scrollview import ScrollView
@@ -9,11 +10,17 @@ import arquivos
 
 
 class ArquivoPagina(RelativeLayout):
+    def adicionarArquivos(self, id):
+        arquivos.adicionarArquivo(id)
+
     def resetarArquivos(self):
         app = App.get_running_app()
         temp = app.root.arch
         temp.clear_widgets()
 
+    def abrirPastas(self, id):
+        print('id_pagina: ', id)
+        arquivos.abrirPasta(id)
 
 
 
@@ -29,13 +36,6 @@ class ListaArquivos(ScrollView):
 
 
 
-
-
-
-
-
-
-
-
-class CaixaArquivos(BoxLayout):
+class CaixaArquivos(GridLayout):
     pass
+

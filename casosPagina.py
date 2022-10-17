@@ -3,6 +3,7 @@ import mysql
 from kivy.app import App
 from kivy.properties import ObjectProperty, Clock, StringProperty
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.scrollview import ScrollView
@@ -52,6 +53,7 @@ class CasosPagina(RelativeLayout):
 
     def deletarCaso(self, instance):
         crudCasos.deletarCaso(instance.ids["id"])
+        arquivos.excluirPasta(instance.ids["id"])
         #print(f'id: {instance.ids["id"]}')
         app = App.get_running_app()
         tmp = app.root.caixa
@@ -97,7 +99,15 @@ class CasosPagina(RelativeLayout):
             #tmp.add_widget(Label(text='tchau', font_size=30, size_hint_y=None, height=200))
             print('temp: ', tmp)
             for item in lista:
-               tmp.add_widget(Label(text=f'{item}', font_size=30, size_hint_y=None, height=200, color = (0, 0, 0)))
+                label = Label(text=f'{item[0:30]}' if len(item) < 30 else f'{item[0:30]}...', pos_hint = {'left': 1}, font_size=20, size_hint_y=None, height=30, color = (0, 0, 0), halign = 'left')
+                tmp.add_widget(label)
+                button = Button(size_hint_y = None, size_hint_x = 0.05, pos_hint = {'right': 1}, height = 30)
+                #source: 'images/icons/icon-deletev2.png'
+                button.bind(on_press = self.pressed)
+                button.nome = item
+                button.id = instance.ids['id']
+                button.label = label
+                tmp.add_widget(button)
 
 
             print('lista: ', lista)
@@ -106,6 +116,15 @@ class CasosPagina(RelativeLayout):
         app.root.transition.direction = 'right'
         app.root.current = 'archTela'
 
+    def pressed(self, instance):
+        app = App.get_running_app()
+        arquivos.excluirArquivo(instance.nome, instance.id)
+        # print(f'id: {instance.ids["id"]}')
+
+        tmp = app.root.arch
+        # print('temp: ', tmp)
+        tmp.remove_widget(instance)
+        tmp.remove_widget(instance.label)
 
 
 
