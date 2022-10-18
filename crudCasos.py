@@ -81,7 +81,7 @@ def criarCaso(nomeCaso, desc, caminho = ''):
         )
 
         c = mydb.cursor()
-        c.execute(f"INSERT INTO casos (nomeCaso, descricao, dataAbertura, fotoCaso) VALUES ('{nomeCaso}', '{desc}', '{atual}', '{caminho}')")
+        c.execute(f"INSERT INTO casos (nomeCaso, descricao, dataCriacao, fotoCaso, autor) VALUES ('{nomeCaso}', '{desc}', '{atual}', '{caminho}', 'Abner')")
         mydb.commit()
         c.close()
         mydb.close()
@@ -230,8 +230,8 @@ def deletarCaso(id):
         return 'Deletado com sucesso'
 
 def atualizarCaso(id, nomeCaso, desc):
-    #now = datetime.now()
-    #atual = now.strftime("%Y-%m-%d %H:%M:%S")
+    now = datetime.now()
+    atual = now.strftime("%Y-%m-%d %H:%M:%S")
     try:
         mydb = mysql.connector.connect(
             host="localhost",
@@ -241,7 +241,7 @@ def atualizarCaso(id, nomeCaso, desc):
         )
 
         c = mydb.cursor()
-        c.execute(f"UPDATE casos SET nomeCaso = '{nomeCaso}', descricao = '{desc}' WHERE idcasos = '{id}'")
+        c.execute(f"UPDATE casos SET nomeCaso = '{nomeCaso}', descricao = '{desc}', dataEdit = '{atual}' WHERE idcasos = '{id}'")
         mydb.commit()
         c.close()
         mydb.close()

@@ -52,8 +52,9 @@ class CasosPagina(RelativeLayout):
         print('ids instancia: ', instance.ids['id'])
 
     def deletarCaso(self, instance):
-        crudCasos.deletarCaso(instance.ids["id"])
         arquivos.excluirPasta(instance.ids["id"])
+        crudCasos.deletarCaso(instance.ids["id"])
+
         #print(f'id: {instance.ids["id"]}')
         app = App.get_running_app()
         tmp = app.root.caixa
@@ -99,13 +100,14 @@ class CasosPagina(RelativeLayout):
             #tmp.add_widget(Label(text='tchau', font_size=30, size_hint_y=None, height=200))
             print('temp: ', tmp)
             for item in lista:
-                label = Label(text=f'{item[0:30]}' if len(item) < 30 else f'{item[0:30]}...', pos_hint = {'left': 1}, font_size=20, size_hint_y=None, height=30, color = (0, 0, 0), halign = 'left')
+                label = Label(text=f'{item[1]}.{item[2]}' if len(item[1]) < 30 else f'{item[1][0:30]}....{item[2]}', pos_hint = {'left': 1}, font_size=20, size_hint_y=None, height=30, color = (0, 0, 0), halign = 'left')
                 tmp.add_widget(label)
                 button = Button(size_hint_y = None, size_hint_x = 0.05, pos_hint = {'right': 1}, height = 30)
                 #source: 'images/icons/icon-deletev2.png'
                 button.bind(on_press = self.pressed)
                 button.nome = item
                 button.id = instance.ids['id']
+                button.idAnexo = item[0]
                 button.label = label
                 tmp.add_widget(button)
 
@@ -118,7 +120,8 @@ class CasosPagina(RelativeLayout):
 
     def pressed(self, instance):
         app = App.get_running_app()
-        arquivos.excluirArquivo(instance.nome, instance.id)
+        nome_arquivo = instance.nome[1] + '.' + instance.nome[2]
+        arquivos.excluirArquivo(nome_arquivo, instance.id, instance.idAnexo)
         # print(f'id: {instance.ids["id"]}')
 
         tmp = app.root.arch
