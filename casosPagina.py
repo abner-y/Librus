@@ -9,6 +9,7 @@ from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.scrollview import ScrollView
 
 import arquivoPagina
+
 import arquivos
 import crudCasos
 import primeiraPagina

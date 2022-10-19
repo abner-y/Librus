@@ -2,6 +2,7 @@
 #:import casosPagina casosPagina
 #:import criarCaso criarCaso
 #:import arquivoPagina arquivoPagina
+#:import paginaPesquisa paginaPesquisa
 
 WindowManager:
     PrimeiraTela:
@@ -45,7 +46,8 @@ WindowManager:
 
 <TerceiraTela>:
     name: 'terceira'
-    EstruturaLivro:
+    MetadeLivro:
+    PaginaPesquisa:
     Button:
         text: '<'
         color: 0, 0, 0
@@ -60,6 +62,7 @@ WindowManager:
         size_hint: .03, .04
         pos_hint: {'center_x': .15, 'center_y': .134}
         on_release:
+            app.root.box2.clear_widgets()
             root.manager.transition.direction = 'right'
             app.root.current = 'primeira'
 
@@ -184,4 +187,75 @@ WindowManager:
          #   points: (self.width*0.115, self.height*0.88, self.width*0.481, self.height*0.8)
           #  width: 1.5
 
+
+<MetadeLivro>:
+    id: metade
+    canvas.before:
+        #Color:
+            #rgb: 1, 0.5, 0.2
+        Rectangle:
+            size: self.size
+            #source: 'images/falling_star.jpg'
+
+        #Color:
+         #   rgba: 0.6, 0.4, 0.1, 1
+        #Esquerda
+        Quad:
+            id: first_quad
+            points: (self.width*0.1, self.height*0.9, self.width*0.48, self.height*0.82, self.width*0.48, self.height*0.1, self.width*0.1, self.height*0.1)
+            source: 'images/fundo9.jpg'
+
+        #Direita
+
+        #Esquerda-meio
+        Quad:
+            points: (self.width*0.48, self.height*0.82, self.width*0.5, self.height*0.8, self.width*0.5, self.height*0.1, self.width*0.48, self.height*0.1)
+            source: 'images/centro-teste2.jpg'
+
+        Color:
+            rgba: 0, 0, 0, 0.8
+        Rectangle:
+            size: self.width*0.015, self.height*0.8
+            pos: self.width*0.1, self.height*0.1
+        Color:
+            rgba: 0.4, 0, 0, 1
+        #Linhas Laterais
+        Line:
+            points: (self.width*0.1, self.height*0.1, self.width*0.1, self.height*0.9)
+            width: 3
+
+        #Linhas Base
+        Line:
+            points: (self.width*0.1, self.height*0.1, self.width*0.5, self.height*0.1)
+            width: 3
+        #Line:
+         #   points: (self.width*0.52, self.height*0.1, self.width*0.9, self.height*0.1)
+          #  width: 3
+        #Linhas Topo
+        Line:
+            points: (self.width*0.1, self.height*0.9, self.width*0.48, self.height*0.82)
+            width: 3
+
+        #Centro
+        #Line:
+         #   points: (self.width*0.5, self.height*0.12, self.width*0.5, self.height*0.78)
+          #  width: 2
+        #teste centro cima
+        Line:
+            points: (self.width*0.48, self.height*0.82, self.width*0.5, self.height*0.8)
+            width: 2
+
+        #lateral-centro
+        Line:
+            points: (self.width*0.115, self.height*0.1, self.width*0.115, self.height*0.9)
+            width: 1.5
+
+        #linhas baixas
+        #Line:
+         #   points: (self.width*0.115, self.height*0.12, self.width*0.481, self.height*0.12)
+          #  width: 1.5
+        #linhas topo?
+        #Line:
+         #   points: (self.width*0.115, self.height*0.88, self.width*0.481, self.height*0.8)
+          #  width: 1.5
 

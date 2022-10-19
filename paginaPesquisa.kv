@@ -1,0 +1,66 @@
+<PaginaPesquisa>:
+    TextInput:
+        id: caixaPesq
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 1.2
+                rectangle: self.x, self.y, self.width, self.height
+        size_hint: .3, .05
+        halign: 'left'
+        text: 'pesquisa'
+        on_text_validate: root.parent.on_text_validate(self)
+        multiline: False
+        pos_hint: {'center_x': .3, 'center_y': .75}
+        background_normal: ''
+        background_color: 1, 1, 1, 0
+
+    #Display caso template
+
+    ViewPesquisa:
+
+    Button:
+        disabled: True
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 1.2
+                rectangle: self.x, self.y, self.width, self.height
+        size_hint: .05, .05
+        pos_hint: {'center_x': .425, 'center_y': .75}
+        background_normal: ''
+        background_color: 0, 0, 0, 0
+        Image:
+            source: 'images/icons/lupa-menor.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+
+<CaixaPesquisa>:
+    id: boxPesquisa
+    orientation: 'vertical'
+    size_hint_x: 0.35
+    pos_hint: {'center_x': .7, 'center_y': .49}
+    #canvas:
+     #   Color:
+      #      rgb: 0,0,0
+       # Line:
+        #    rectangle: (self.x, self.y, self.width, self.height) #x, y, w, h
+         #   width: 2
+
+<ViewPesquisa>:
+    size_hint_y: 0.6
+    pos_hint: {'center_x': 0.62, 'center_y': .4}
+    do_scroll_x: False
+    CaixaPesquisa:
+        id: box2
+        size_hint_y: None
+        height: self.minimum_height
+        #canvas:
+         #   Color:
+          #      rgb: 0,0,0
+           # Line:
+            #    rectangle: (self.x, self.y, self.width, self.height) #x, y, w, h
+             #   width: 2
+
