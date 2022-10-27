@@ -24,6 +24,8 @@ class CasosPagina(RelativeLayout):
 
     def post_init(self, *args):
         self.nomeCapitulo = 'teste'
+        app = App.get_running_app()
+        app.root.label = self.ids.labelPagina
 
     def displayCaso(self, instance):
         self.ids.descCap.disabled = True
@@ -50,6 +52,7 @@ class CasosPagina(RelativeLayout):
         app = App.get_running_app()
         app.tituloCaso = str(instance.titulo)
         app.descCaso = instance.desc
+        app.root.label.text = str(instance.ids['id'])
         print('ids instancia: ', instance.ids['id'])
 
     def deletarCaso(self, instance):
